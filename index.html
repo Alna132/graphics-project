@@ -40,12 +40,12 @@
             
             var update = function() {
             
-            };
+            };// End of update.
             
             var render = function() {
                 ctx.fillStyle = "#000";
                 ctx.fillRect(0, 0, width, height);
-            }; 
+            };// End of render.
             
             function Paddle(x, y, width, height) {
                 this.x = x;
@@ -54,6 +54,19 @@
                 this.height = height;
                 this.x_speed = 0;
                 this.y_speed = 0;
+            }// End of Paddle.
+            
+            Paddle.prototype.render = function() {
+                context.fillStyle = "#FF0000";
+                context.fillRect(this.x, this.y, this.width, this.height);
+            };
+            
+            function Player() {
+                this.paddle = new Paddle(175, 580, 50, 10);
+            }
+
+            function Computer() {
+                this.paddle = new Paddle(175, 10, 50, 10);
             }            
             
             //A ball object.
