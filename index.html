@@ -12,6 +12,14 @@
     
     <body>
         <script type="text/javascript">
+            var canvas = document.createElement("pongCanvas");
+            var width = 400;
+            var height = 600;
+            canvas.width = width;
+            canvas.height = height;
+            var context = canvas.getContext("2d");
+            canvas.style.border = '1px solid #FFF';
+            
             var ball = {
               position: {x: 50, y: 10}, 
               radius: 3,
