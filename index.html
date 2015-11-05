@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    ...
-    <style type="text/css"></style>
-  </head>
-  <body>
-    <script type="text/javascript">
-      ...
-    </script>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Graphics Project</title>
+        <style type="text/css">
+            body {
+                background-color: white;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <script type="text/javascript">
+            var ball = {
+              position: {x: 50, y: 10}, 
+              radius: 3,
+              velocity: {x: 0, y: 1},
+              step: function() {
+                  this.position.x += this.velocity.x;
+                  this.position.y += this.velocity.y;},
+              // Draw the ball (stroked, not filled).
+              draw: function(ctx) {
+                  ctx.beginPath();
+                  ctx.arc(ball.position.x, ball.position.y, ball.radius, 0, 2 * Math.PI);
+                  ctx.stroke();
+                  ctx.fill();}
+            }// End of Ball
+        </script>
+    </body>
 </html>
