@@ -18,7 +18,8 @@
     </head>
     
     <body>
-        <canvas width="400" height="600" id="pongCanvas"></canvas>
+        <canvas width="400" height="600" id="gamecanvas"></canvas>
+        
         <script type="text/javascript">
             // A request animation frame which allows compatibility over multiple web browsers.
             var animate = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
@@ -27,13 +28,13 @@
             
             var init = function() {
                 // A canvas variable.
-                var canvas = document.createElement("pongCanvas");
+                var canvas = document.createElement("gamecanvas");
                 var ctx = canvas.getContext("2d");
                 //canvas.style.border = '1px solid #FFF';
             }
 
             window.onload = function() {
-                document.body.appendChild(pongCanvas);
+                document.body.appendChild(gamecanvas);
                 init();
                 animate(step);
             };
