@@ -8,27 +8,33 @@
                 background-color: black;
                 border: 1px solid white;
             }
+            Paddle {
+                fill: #FF0000;
+            }
+            Ball {
+                fill: #FFF;
+            }
         </style>
     </head>
     
     <body>
         <canvas width="400" height="600" id="pongCanvas"></canvas>
         <script type="text/javascript">
+            // A request animation frame which allows compatibility over multiple web browsers.
+            var animate = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
+                window.setTimeout(callback, 1000/60) 
+            };// End of animate.
+            
             var init = function() {
                 // A canvas variable.
                 var canvas = document.createElement("pongCanvas");
                 var ctx = canvas.getContext("2d");
                 //canvas.style.border = '1px solid #FFF';
             }
-            
-            // A request animation frame which allows compatibility over multiple web browsers.
-            var animate = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
-                window.setTimeout(callback, 1000/60) 
-            };// End of animate.
-            
+
             window.onload = function() {
+                document.body.appendChild(pongCanvas);
                 init();
-                document.body.appendChild(canvas);
                 animate(step);
             };
             
@@ -57,33 +63,43 @@
             }// End of Paddle.
             
             Paddle.prototype.render = function() {
-                context.fillStyle = "#FF0000";
-                context.fillRect(this.x, this.y, this.width, this.height);
+                //ctx.fillStyle = "#FF0000";
+                //ctx.fillRect(this.x, this.y, this.width, this.height);
             };
             
             function Player() {
                 this.paddle = new Paddle(175, 580, 50, 10);
-            }
+            }// End of Player.
 
             function Computer() {
                 this.paddle = new Paddle(175, 10, 50, 10);
-            }            
+            }// End of Computer.
+
+            Player.prototype.render = function() {
+                this.paddle.render();
+            };
+
+            Computer.prototype.render = function() {
+                this.paddle.render();
+            };
             
-            //A ball object.
-            /*var ball = {
-              position: {x: 50, y: 10}, 
-              radius: 3,
-              velocity: {x: 0, y: 1},
-              //step: function() {
-                  //this.position.x += this.velocity.x;
-                  //this.position.y += this.velocity.y;},
-              // Draw the ball (stroked, not filled).
-              draw: function(ctx) {
-                  ctx.beginPath();
-                  ctx.arc(ball.position.x, ball.position.y, ball.radius, 0, 2 * Math.PI);
-                  ctx.stroke();
-                  ctx.fill();}
-            }// End of Ball.*/
+            function Ball(x, y) {
+                this.x = x;
+                this.y = y;
+                this.x_speed = 0;
+                this.y_speed = 3;
+                this.radius = 5;
+            }
+
+            Ball.prototype.render = function() {
+                //ctx.beginPath();
+                //ctx.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
+                //ctx.fillStyle = "#FFF";
+                //ctx.fill();
+            };
+
+            };
+
         </script>
     </body>
 </html>
