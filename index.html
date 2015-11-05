@@ -12,30 +12,29 @@
     </head>
     
     <body>
-        <canvas id="pongCanvas"></canvas>
+        <canvas width="400" height="600" id="pongCanvas"></canvas>
         <script type="text/javascript">
+            var init = function() {
+                // A canvas variable.
+                var canvas = document.createElement("pongCanvas");
+                var ctx = canvas.getContext("2d");
+                //canvas.style.border = '1px solid #FFF';
+            }
+            
             // A request animation frame which allows compatibility over multiple web browsers.
             var animate = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
                 window.setTimeout(callback, 1000/60) 
             };// End of animate.
             
-            // A canvas variable.
-            var canvas = document.createElement("pongCanvas");
-            var width = 400;
-            var height = 600;
-            canvas.width = width;
-            canvas.height = height;
-            var context = canvas.getContext("2d");
-            canvas.style.border = '1px solid #FFF';
-            
             window.onload = function() {
-              document.body.appendChild(canvas);
-              animate(step);
+                init();
+                document.body.appendChild(canvas);
+                animate(step);
             };
             
             var step = function() {
               update();
-              //render();
+              render();
               animate(step);
             };// End of step.
             
@@ -43,10 +42,10 @@
             
             };
             
-            //var render = function() {
-            //    context.fillStyle = "#000";
-            //    context.fillRect(0, 0, width, height);
-            //};            
+            var render = function() {
+                ctx.fillStyle = "#000";
+                ctx.fillRect(0, 0, width, height);
+            };            
             
             //A ball object.
             /*var ball = {
