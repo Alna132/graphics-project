@@ -45,7 +45,16 @@
             var render = function() {
                 ctx.fillStyle = "#000";
                 ctx.fillRect(0, 0, width, height);
-            };            
+            }; 
+            
+            function Paddle(x, y, width, height) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+                this.x_speed = 0;
+                this.y_speed = 0;
+            }            
             
             //A ball object.
             /*var ball = {
