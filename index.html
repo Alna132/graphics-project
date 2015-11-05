@@ -12,6 +12,12 @@
     
     <body>
         <script type="text/javascript">
+            // A request animation frame which allows compatibility over multiple web browsers.
+            var animate = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
+                window.setTimeout(callback, 1000/60) 
+            };// End of animate.
+            
+            // A canvas variable.
             var canvas = document.createElement("pongCanvas");
             var width = 400;
             var height = 600;
@@ -20,6 +26,7 @@
             var context = canvas.getContext("2d");
             canvas.style.border = '1px solid #FFF';
             
+            A ball object.
             var ball = {
               position: {x: 50, y: 10}, 
               radius: 3,
@@ -33,7 +40,7 @@
                   ctx.arc(ball.position.x, ball.position.y, ball.radius, 0, 2 * Math.PI);
                   ctx.stroke();
                   ctx.fill();}
-            }// End of Ball
+            }// End of Ball.
         </script>
     </body>
 </html>
