@@ -26,14 +26,25 @@
             var context = canvas.getContext("2d");
             canvas.style.border = '1px solid #FFF';
             
+            window.onload = function() {
+              document.body.appendChild(canvas);
+              animate(step);
+            };
+            
+            var step = function() {
+              update();
+              render();
+              animate(step);
+            };// End of step.
+            
             A ball object.
             var ball = {
               position: {x: 50, y: 10}, 
               radius: 3,
               velocity: {x: 0, y: 1},
-              step: function() {
-                  this.position.x += this.velocity.x;
-                  this.position.y += this.velocity.y;},
+              //step: function() {
+                  //this.position.x += this.velocity.x;
+                  //this.position.y += this.velocity.y;},
               // Draw the ball (stroked, not filled).
               draw: function(ctx) {
                   ctx.beginPath();
