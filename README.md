@@ -6,7 +6,10 @@ You have just started working for a games company called GaCo, and as your first
 The game will, for the time being, be focused only on players accessing the game through their desktop browser.
 GaCo hopes the game will become popular, so that they can then sell advertisements on the webpage where the game is available.
 
+# Pong - an addictive 2D game
 
->*The beauty of Pac-Man is that anyone who plays it immediately knows what is going on in the game. That is why it still works today if you download it on a smartphone. Thirty-five years ago, we were limited by the power of the CPU, now we don’t have those constraints, but game makers need to be thinking about what made the older games so good.*
+>*Pong (marketed as PONG) is one of the earliest arcade video games and the very first sports arcade video game. It is a tennis sports game featuring simple two-dimensional graphics. While other arcade video games such as Computer Space came before it, Pong was one of the first video games to reach mainstream popularity. The aim is to defeat an opponent in a simulated table-tennis game by earning a higher score. The game was originally manufactured by Atari Incorporated (Atari), which released it in 1972. Allan Alcorn created Pong as a training exercise assigned to him by Atari co-founder Nolan Bushnell. Bushnell based the idea on an electronic ping-pong game included in the Magnavox Odyssey, which later resulted in a lawsuit against Atari. Surprised by the quality of Alcorn's work, Bushnell and Atari co-founder Ted Dabney decided to manufacture the game.*
 
-> **Tōru Iwatani**
+> ** Wikipedia**
+
+Pong has been regarded as one of the classic arcade games for decades now. It's simplicity in is user interaction means that it can be played by even the most amatur of gamers. I chose to recreate my own version of it as I beleve that it is addicting and usable by everyone, regardless of age.
