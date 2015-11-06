@@ -48,6 +48,7 @@
             };// End of step.
             
             var update = function() {
+                player.update();
                 ball.update(player.paddle, computer.paddle);
             };// End of update.
             
@@ -73,6 +74,21 @@
             function Player() {
                 this.paddle = new Paddle(210, 580, 50, 10);
             }// End of Player.
+            
+            Player.prototype.update = function() {
+                for(var key in keysDown) {
+                    var value = Number(key);
+                    if(value == 37) { // left arrow
+                        this.paddle.move(-4, 0);
+                    } 
+                    else if (value == 39) { // right arrow
+                        this.paddle.move(4, 0);
+                    } 
+                    else {
+                        this.paddle.move(0, 0);
+                    }
+                }
+            };// End of Player.prototype.update.
 
             function Computer() {
                 this.paddle = new Paddle(210, 10, 50, 10);
