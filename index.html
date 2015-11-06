@@ -28,7 +28,7 @@
             var width = "500";
             var height = "600";
             canvas.width = width;
-            canvas.height = height;
+            canvas.height = height;          
             
             //A function to visually separate the player's and computer's fields.
             var drawLine = function() {
@@ -57,13 +57,13 @@
             
             //This variable tallys up the player's score.
             var drawPlayerScore = function() {
-                ctx.font = "16px Arial";
+                ctx.font = "16px Arial, sans-serif";
                 ctx.fillStyle = "#FFF";
                 ctx.fillText("Your Score: "+playerScore, 10, canvas.height-285);
             }// End of drawPlayerScore
             //This variable tallys up the computer's score.
             var drawComputerScore = function() {
-                ctx.font = "16px Arial";
+                ctx.font = "16px Arial, sans-serif";
                 ctx.fillStyle = "#FFF";
                 ctx.fillText("HAL's Score: "+computerScore, 10, canvas.height-315);
             }// End of drawComputerScore
@@ -229,6 +229,8 @@
                     if(computerScore == 5) {
                         alert("HAL WINS! DEFEAT FOR MANKIND AGAIN");
                         document.location.reload();
+                        // Stop the Animation
+                        //cancelRequestAnimFrame(init);
                     }
                 }
                 //This if statement records when the ball hits the top of the canvas.
@@ -243,6 +245,8 @@
                     if(playerScore == 5) {
                         alert("PLAYER WINS!");
                         document.location.reload();
+                        // Stop the Animation
+                        //cancelRequestAnimFrame(init);                        
                     }
                 }
 
