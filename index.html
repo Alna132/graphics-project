@@ -89,6 +89,21 @@
                     }
                 }
             };// End of Player.prototype.update.
+            
+            Paddle.prototype.move = function(x, y) {
+                this.x += x;
+                this.y += y;
+                this.x_speed = x;
+                this.y_speed = y;
+                if(this.x < 0) { // all the way to the left
+                    this.x = 0;
+                    this.x_speed = 0;
+                } 
+                else if (this.x + this.width > 400) { // all the way to the right
+                    this.x = 400 - this.width;
+                    this.x_speed = 0;
+                }
+            }// End of Paddle.prototype.move
 
             function Computer() {
                 this.paddle = new Paddle(210, 10, 50, 10);
