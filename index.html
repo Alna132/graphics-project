@@ -70,7 +70,7 @@
             var drawComputerScore = function() {
                 ctx.font = "16px Arial";
                 ctx.fillStyle = "#FFF";
-                ctx.fillText("CPU Score: "+computerScore, 10, canvas.height-315);
+                ctx.fillText("HAL Score: "+computerScore, 10, canvas.height-315);
             }// End of drawComputerScore
             
             //function to keep the animation going.
@@ -232,7 +232,7 @@
                     
                     //if statement to display winner when count reaches 5.
                     if(computerScore == 5) {
-                        alert("COMPUTER WINS!");
+                        alert("HAL WINS! DEFEAT FOR MANKIND AGAIN");
                         document.location.reload();
                     }
                 }
