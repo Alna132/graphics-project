@@ -18,13 +18,17 @@
     </head>
     
     <body>
-        <canvas id="gamecanvas" width="400" height="600" ></canvas>
+        <canvas id="gamecanvas" ></canvas>
         
         <script type="text/javascript">
             
             // A canvas variable.
             var canvas = document.getElementById("gamecanvas");
             var ctx = canvas.getContext("2d");
+            var width = "500";
+            var height = "600";
+            canvas.width = width;
+            canvas.height = height;
             //canvas.style.border = '1px solid #FFF';
             
             // A request animation frame which allows compatibility over multiple web browsers.
@@ -44,7 +48,7 @@
             };// End of step.
             
             var update = function() {
-            
+                ball.update();
             };// End of update.
             
             var render = function() {
@@ -62,16 +66,16 @@
             }// End of Paddle.
             
             Paddle.prototype.render = function() {
-                //ctx.fillStyle = "#FF0000";
-                //ctx.fillRect(this.x, this.y, this.width, this.height);
+                ctx.fillStyle = "#FF0000";
+                ctx.fillRect(this.x, this.y, this.width, this.height);
             };
             
             function Player() {
-                this.paddle = new Paddle(175, 580, 50, 10);
+                this.paddle = new Paddle(210, 580, 50, 10);
             }// End of Player.
 
             function Computer() {
-                this.paddle = new Paddle(175, 10, 50, 10);
+                this.paddle = new Paddle(210, 10, 50, 10);
             }// End of Computer.
 
             Player.prototype.render = function() {
@@ -91,19 +95,24 @@
             }
 
             Ball.prototype.render = function() {
-                //ctx.beginPath();
-                //ctx.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
-                //ctx.fillStyle = "#FFF";
-                //ctx.fill();
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
+                ctx.fillStyle = "#FFF";
+                ctx.fill();
+            };
+            
+            Ball.prototype.update = function() {
+                this.x += this.x_speed;
+                this.y += this.y_speed;
             };
             
             var player = new Player();
             var computer = new Computer();
-            var ball = new Ball(200, 300);
+            var ball = new Ball(235, 300);
 
             var render = function() {
-                //ctx.fillStyle = "#000";
-                //ctx.fillRect(0, 0, width, height);
+                ctx.fillStyle = "#000";
+                ctx.fillRect(0, 0, width, height);
                 player.render();
                 computer.render();
                 ball.render();
