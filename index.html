@@ -58,7 +58,10 @@
                 ctx.fillRect(0, 0, width, height);
             };// End of render.
             
+            // Paddle is an object that represents a paddle on the canvas.
             function Paddle(x, y, width, height) {
+                // x and y are properties that represent the paddle's position on the canvas.
+                // They are objects themselves, and represent the x and y coordinates of the paddle.
                 this.x = x;
                 this.y = y;
                 this.width = width;
@@ -136,7 +139,10 @@
                 this.paddle.render();
             };
             
+            // Ball is an object that represents a ball on the canvas.
             function Ball(x, y) {
+                // x and y are properties that represent the ball's position on the canvas.
+                // They are objects themselves, and represent the x and y coordinates of the ball.                
                 this.x = x;
                 this.y = y;
                 this.x_speed = 0;
