@@ -4,14 +4,6 @@
         <meta charset="UTF-8">
         <title>Graphics Project</title>
         <style type="text/css">
- /*          h1 {
-                font-size: 50px;
-                color: crimson;
-            }
-            p {
-                font-size: 50px;
-                color: white;
-            }*/
             canvas {
                 background-color: black;
                 border: 1px solid white;
@@ -49,36 +41,37 @@
                 animate(step);
             };
             
-            var playerCount = 0;
-            var computerCount = 0;
+            //Player and Computer score variable to keep track of score.
+            var playerScore = 0;
+            var computerScore = 0;
             
             //These variables tally up the player and computers score.
-            var playerScore = function() {
-                ctx.fillStyle = "#000";
-                ctx.fontSize = "50px";
-                ctx.fillText(playerCount, canvas.width-100, canvas.height-200)
-            }
-            var computerScore = function() {
-                ctx.fillStyle = "#000";
-                ctx.fontSize = "50px";
-                ctx.fillText(playerCount, canvas.width-100, canvas.height-400)
-            }
-            
-            //playerScore();
-            //computerScore();
-            //var computerScore = 0;
+            var drawPlayerScore = function() {
+                ctx.font = "16px Arial";
+                ctx.fillStyle = "#FFF";
+                ctx.fillText("Player Score: "+playerScore, 10, canvas.height-200);
+            }// End of drawPlayerScore
+            var drawComputerScore = function() {
+                ctx.font = "16px Arial";
+                ctx.fillStyle = "#FFF";
+                ctx.fillText("CPU Score: "+computerScore, 10, canvas.height-400);
+            }// End of drawComputerScore
             
             
             var step = function() {
-              update();
-              render();
-              animate(step);
+                update();
+                render();
+                animate(step);
+                drawComputerScore();
+                drawPlayerScore();
             };// End of step.
             
             var update = function() {
                 player.update();
                 computer.update(ball);
                 ball.update(player.paddle, computer.paddle);
+                drawComputerScore();
+                drawPlayerScore();                
             };// End of update.
             
             var render = function() {
@@ -209,9 +202,12 @@
                     this.y_speed = 3;
                     this.x = 235;
                     this.y = 300;
-                    computerCount += 1;
-                    //playerScore();
-                    //computerScore();                    
+                    computerScore++;
+                    //if statement to display winner when count reaches 5.
+                    if(computerScore == 5) {
+                        alert("COMPUTER WINS!");
+                        document.location.reload();
+                    }
                 }
                 //This if statement records when the ball hits the top of the canvas.
                 if(this.y < 0) {
@@ -219,7 +215,12 @@
                     this.y_speed = -3;
                     this.x = 235;
                     this.y = 300;
-                    playerCount += 1;
+                    playerScore++;
+                    //if statement to display winner when count reaches 5.
+                    if(playerScore == 5) {
+                        alert("PLAYER WINS!");
+                        document.location.reload();
+                    }
                 }
 
                 if(top_y > 300) {
@@ -244,12 +245,6 @@
             var player = new Player();
             var computer = new Computer();
             var ball = new Ball(235, 300);
-            
-            var playerScore = new playerScore();
-            var computerScore = new computerScore();
-            
-            playerScore;
-            computerScore;
             
             var render = function() {
                 ctx.fillStyle = "#000";
