@@ -4,10 +4,6 @@
         <meta charset="UTF-8">
         <title>Graphics Project</title>
         <style type="text/css">
-            h1 {
-               color: crimson;
-               font-size: 100px;
-            }
             canvas {
                 background-color: black;
                 border: 1px solid white;
@@ -38,7 +34,6 @@
             var drawLine = function() {
                 ctx.strokeStyle = "#FFF";
                 ctx.lineWidth = 2;
-                //ctx.beginPath();
                 ctx.moveTo(0, 295);
                 ctx.lineTo(500, 295);
                 ctx.stroke();
@@ -64,13 +59,13 @@
             var drawPlayerScore = function() {
                 ctx.font = "16px Arial";
                 ctx.fillStyle = "#FFF";
-                ctx.fillText("Player Score: "+playerScore, 10, canvas.height-285);
+                ctx.fillText("Your Score: "+playerScore, 10, canvas.height-285);
             }// End of drawPlayerScore
             //This variable tallys up the computer's score.
             var drawComputerScore = function() {
                 ctx.font = "16px Arial";
                 ctx.fillStyle = "#FFF";
-                ctx.fillText("HAL Score: "+computerScore, 10, canvas.height-315);
+                ctx.fillText("HAL's Score: "+computerScore, 10, canvas.height-315);
             }// End of drawComputerScore
             
             //function to keep the animation going.
