@@ -22,19 +22,19 @@
     </head>
     
     <body>
-
-        
         <canvas id="gamecanvas" >Game Canvas</canvas>
         
         <script type="text/javascript">            
             
-            // A canvas variable.
+            //Canvas, width and height variables, witch allow me to use the height and width variables later.
             var canvas = document.getElementById("gamecanvas");
             var ctx = canvas.getContext("2d");
             var width = "500";
             var height = "600";
             canvas.width = width;
             canvas.height = height;
+            
+            //A function to visually separate the player's and computer's fields.
             var drawLine = function() {
                 ctx.strokeStyle = "#FFF";
                 ctx.lineWidth = 2;
@@ -42,10 +42,10 @@
                 ctx.moveTo(0, 295);
                 ctx.lineTo(500, 295);
                 ctx.stroke();
-                //ctx.strokeStyle("#FFF");
             };// End of drawLine
             
-            // A request animation frame which allows compatibility over multiple web browsers.
+            //A request animation frame which allows compatibility over multiple web browsers.
+            //webkitRequestAnimationFrame is chrome and safari compatible, mozRequestAnimationFrame is Firefox compatible.
             var animate = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
                 window.setTimeout(callback, 1000/60) 
             };// End of animate.
@@ -73,13 +73,14 @@
                 ctx.fillText("CPU Score: "+computerScore, 10, canvas.height-315);
             }// End of drawComputerScore
             
-            
+            //function to keep the animation going.
             var step = function() {
                 update();
                 draw();
                 animate(step);
             };// End of step.
             
+            //function to update the location of the objects.
             var update = function() {
                 player.update();
                 computer.update(ball);
@@ -174,10 +175,11 @@
                 }
             };            
 
+            //calls the function to draw player paddle
             Player.prototype.draw = function() {
                 this.paddle.draw();
             };
-
+            //calls the function to draw computer paddle
             Computer.prototype.draw = function() {
                 this.paddle.draw();
             };
@@ -193,6 +195,7 @@
                 this.radius = 5;
             }
 
+            //function to draw the ball object.
             Ball.prototype.draw = function() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
@@ -200,6 +203,7 @@
                 ctx.fill();
             };
             
+            //updates the position, direction and speed of the ball
             Ball.prototype.update = function(paddle1, paddle2) {
                 this.x += this.x_speed;
                 this.y += this.y_speed;
@@ -272,7 +276,7 @@
             var computer = new Computer();
             var ball = new Ball(235, 300);
             
-            
+            //calls all the draw functions.
             var draw = function() {
                 ctx.fillStyle = "#000";
                 ctx.fillRect(0, 0, width, height);
@@ -286,7 +290,6 @@
             
             //Code to find out wich key is pressed on the keyboard
             var keysDown = {};
-
             window.addEventListener("keydown", function(event) {
                 keysDown[event.keyCode] = true;
             });
@@ -295,8 +298,6 @@
                 delete keysDown[event.keyCode];
             }); 
             
-            
-
         </script>
     </body>
 </html>
