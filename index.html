@@ -4,6 +4,14 @@
         <meta charset="UTF-8">
         <title>Graphics Project</title>
         <style type="text/css">
+ /*          h1 {
+                font-size: 50px;
+                color: crimson;
+            }
+            p {
+                font-size: 50px;
+                color: white;
+            }*/
             canvas {
                 background-color: black;
                 border: 1px solid white;
@@ -40,6 +48,26 @@
                 document.body.appendChild(gamecanvas);
                 animate(step);
             };
+            
+            var playerCount = 0;
+            var computerCount = 0;
+            
+            //These variables tally up the player and computers score.
+            var playerScore = function() {
+                ctx.fillStyle = "#000";
+                ctx.fontSize = "50px";
+                ctx.fillText(playerCount, canvas.width-100, canvas.height-200)
+            }
+            var computerScore = function() {
+                ctx.fillStyle = "#000";
+                ctx.fontSize = "50px";
+                ctx.fillText(playerCount, canvas.width-100, canvas.height-400)
+            }
+            
+            //playerScore();
+            //computerScore();
+            //var computerScore = 0;
+            
             
             var step = function() {
               update();
@@ -165,20 +193,33 @@
                 var bottom_x = this.x + 5;
                 var bottom_y = this.y + 5;
                 
-                if(this.x - 5 < 0) { // hitting the left wall
+                //This if statement tells the ball to rebound when it hits the left side of the canvas.
+                if(this.x - 5 < 0) {
                     this.x = 5;
                     this.x_speed = -this.x_speed;
                 } 
-                else if(this.x + 5 > 400) { // hitting the right wall
-                    this.x = 395;
+                //This if statement tells the ball to rebound when it hits the right side of the canvas.
+                else if(this.x + 5 > 500) { 
+                    this.x = 495;
                     this.x_speed = -this.x_speed;
                 }
-
-                if(this.y < 0 || this.y > 600) { // a point was scored
+                //This if statement records when the ball hits the bottom of the canvas. 
+                if(this.y > 600) {
                     this.x_speed = 0;
                     this.y_speed = 3;
-                    this.x = 200;
+                    this.x = 235;
                     this.y = 300;
+                    computerCount += 1;
+                    //playerScore();
+                    //computerScore();                    
+                }
+                //This if statement records when the ball hits the top of the canvas.
+                if(this.y < 0) {
+                    this.x_speed = 0;
+                    this.y_speed = -3;
+                    this.x = 235;
+                    this.y = 300;
+                    playerCount += 1;
                 }
 
                 if(top_y > 300) {
@@ -203,7 +244,13 @@
             var player = new Player();
             var computer = new Computer();
             var ball = new Ball(235, 300);
-
+            
+            var playerScore = new playerScore();
+            var computerScore = new computerScore();
+            
+            playerScore;
+            computerScore;
+            
             var render = function() {
                 ctx.fillStyle = "#000";
                 ctx.fillRect(0, 0, width, height);
@@ -224,5 +271,6 @@
             });            
 
         </script>
+       
     </body>
 </html>
