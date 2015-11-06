@@ -29,3 +29,11 @@ Pong has been regarded as one of the classic arcade games for decades now. It's 
 1. The game is won when either the user or AI reaches 5 points. At which point the game is restarted.
 
 I hope you enjoy!
+
+### References:
+- Code preveously done in class.
+- [Ping-pong tutorial with sounds](http://cssdeck.com/labs/ping-pong-game-tutorial-with-html5-canvas-and-sounds)
+- [Colour Names](http://www.w3schools.com/tags/ref_colornames.asp)
+- [Score tally and win pop-up](https://developer.mozilla.org/en-US/docs/Games/Workflows/2D_Breakout_game_pure_JavaScript/Track_the_score_and_win)
+- [requestAnimationFrame compatibility](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
+- [Javascript pong](http://www.i-programmer.info/projects/36/365-javascript-pong-.html)
