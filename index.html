@@ -36,21 +36,23 @@
                 window.setTimeout(callback, 1000/60) 
             };// End of animate.
             
+            //This function tells the browser what to start immediatly on start up.
             window.onload = function() {
                 document.body.appendChild(gamecanvas);
-                animate(step);
+                animate(step); 
             };
             
             //Player and Computer score variable to keep track of score.
             var playerScore = 0;
             var computerScore = 0;
             
-            //These variables tally up the player and computers score.
+            //This variable tallys up the player's score.
             var drawPlayerScore = function() {
                 ctx.font = "16px Arial";
                 ctx.fillStyle = "#FFF";
                 ctx.fillText("Player Score: "+playerScore, 10, canvas.height-285);
             }// End of drawPlayerScore
+            //This variable tallys up the computer's score.
             var drawComputerScore = function() {
                 ctx.font = "16px Arial";
                 ctx.fillStyle = "#FFF";
@@ -87,11 +89,13 @@
                 this.y_speed = 0;
             }// End of Paddle.
             
+            //This function draws the paddle object.
             Paddle.prototype.draw = function() {
                 ctx.fillStyle = "#FF0000";
                 ctx.fillRect(this.x, this.y, this.width, this.height);
             };
             
+            //This function creates the player's paddle object.
             function Player() {
                 this.paddle = new Paddle(210, 580, 50, 10);
             }// End of Player.
@@ -99,10 +103,14 @@
             Player.prototype.update = function() {
                 for(var key in keysDown) {
                     var value = Number(key);
-                    if(value == 37) { // left arrow
+                    //This tells the paddle to move to the left if the right arrow is pressed.
+                    //The id number of the left arrow is 37.
+                    if(value == 37) { 
                         this.paddle.move(-4, 0);
                     } 
-                    else if (value == 39) { // right arrow
+                    //This tells the paddle to move to the right if the right arrow is pressed.
+                    //The id number of the right arrow is 39.
+                    else if (value == 39) { 
                         this.paddle.move(4, 0);
                     } 
                     else {
@@ -111,21 +119,25 @@
                 }
             };// End of Player.prototype.update.
             
+            //This function tells the paddle how to move.
             Paddle.prototype.move = function(x, y) {
                 this.x += x;
                 this.y += y;
                 this.x_speed = x;
                 this.y_speed = y;
-                if(this.x < 0) { // all the way to the left
+                //This tells the paddle how far to the left it can go.
+                if(this.x < 0) {
                     this.x = 0;
                     this.x_speed = 0;
                 } 
-                else if (this.x + this.width > 500) { // all the way to the right
+                //This tells the paddle how far to the right it can go.
+                else if (this.x + this.width > 500) {
                     this.x = 500 - this.width;
                     this.x_speed = 0;
                 }
             }// End of Paddle.prototype.move
 
+            //This function creates the computer's paddle object.
             function Computer() {
                 this.paddle = new Paddle(210, 10, 50, 10);
             }// End of Computer.
@@ -266,7 +278,9 @@
 
             window.addEventListener("keyup", function(event) {
                 delete keysDown[event.keyCode];
-            });            
+            }); 
+            
+            
 
         </script>
     </body>
