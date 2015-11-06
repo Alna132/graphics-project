@@ -49,6 +49,7 @@
             
             var update = function() {
                 player.update();
+                computer.update(ball);
                 ball.update(player.paddle, computer.paddle);
             };// End of update.
             
@@ -99,8 +100,8 @@
                     this.x = 0;
                     this.x_speed = 0;
                 } 
-                else if (this.x + this.width > 400) { // all the way to the right
-                    this.x = 400 - this.width;
+                else if (this.x + this.width > 500) { // all the way to the right
+                    this.x = 500 - this.width;
                     this.x_speed = 0;
                 }
             }// End of Paddle.prototype.move
@@ -108,6 +109,24 @@
             function Computer() {
                 this.paddle = new Paddle(210, 10, 50, 10);
             }// End of Computer.
+            
+            Computer.prototype.update = function(ball) {
+                var x_pos = ball.x;
+                var diff = -((this.paddle.x + (this.paddle.width / 2)) - x_pos);
+                if(diff < 0 && diff < -4) { // max speed left
+                    diff = -5;
+                } 
+                else if(diff > 0 && diff > 4) { // max speed right
+                    diff = 5;
+                }
+                this.paddle.move(diff, 0);
+                if(this.paddle.x < 0) {
+                    this.paddle.x = 0;
+                } 
+                else if (this.paddle.x + this.paddle.width > 500) {
+                    this.paddle.x = 500 - this.paddle.width;
+                }
+            };            
 
             Player.prototype.render = function() {
                 this.paddle.render();
