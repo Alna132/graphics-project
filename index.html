@@ -49,35 +49,31 @@
             var drawPlayerScore = function() {
                 ctx.font = "16px Arial";
                 ctx.fillStyle = "#FFF";
-                ctx.fillText("Player Score: "+playerScore, 10, canvas.height-200);
+                ctx.fillText("Player Score: "+playerScore, 10, canvas.height-285);
             }// End of drawPlayerScore
             var drawComputerScore = function() {
                 ctx.font = "16px Arial";
                 ctx.fillStyle = "#FFF";
-                ctx.fillText("CPU Score: "+computerScore, 10, canvas.height-400);
+                ctx.fillText("CPU Score: "+computerScore, 10, canvas.height-315);
             }// End of drawComputerScore
             
             
             var step = function() {
                 update();
-                render();
+                draw();
                 animate(step);
-                drawComputerScore();
-                drawPlayerScore();
             };// End of step.
             
             var update = function() {
                 player.update();
                 computer.update(ball);
-                ball.update(player.paddle, computer.paddle);
-                drawComputerScore();
-                drawPlayerScore();                
+                ball.update(player.paddle, computer.paddle);               
             };// End of update.
             
-            var render = function() {
+            var draw = function() {
                 ctx.fillStyle = "#000";
                 ctx.fillRect(0, 0, width, height);
-            };// End of render.
+            };// End of draw.
             
             // Paddle is an object that represents a paddle on the canvas.
             function Paddle(x, y, width, height) {
@@ -91,7 +87,7 @@
                 this.y_speed = 0;
             }// End of Paddle.
             
-            Paddle.prototype.render = function() {
+            Paddle.prototype.draw = function() {
                 ctx.fillStyle = "#FF0000";
                 ctx.fillRect(this.x, this.y, this.width, this.height);
             };
@@ -152,12 +148,12 @@
                 }
             };            
 
-            Player.prototype.render = function() {
-                this.paddle.render();
+            Player.prototype.draw = function() {
+                this.paddle.draw();
             };
 
-            Computer.prototype.render = function() {
-                this.paddle.render();
+            Computer.prototype.draw = function() {
+                this.paddle.draw();
             };
             
             // Ball is an object that represents a ball on the canvas.
@@ -171,7 +167,7 @@
                 this.radius = 5;
             }
 
-            Ball.prototype.render = function() {
+            Ball.prototype.draw = function() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
                 ctx.fillStyle = "#FFF";
@@ -203,6 +199,7 @@
                     this.x = 235;
                     this.y = 300;
                     computerScore++;
+                    
                     //if statement to display winner when count reaches 5.
                     if(computerScore == 5) {
                         alert("COMPUTER WINS!");
@@ -216,6 +213,7 @@
                     this.x = 235;
                     this.y = 300;
                     playerScore++;
+                    
                     //if statement to display winner when count reaches 5.
                     if(playerScore == 5) {
                         alert("PLAYER WINS!");
@@ -223,6 +221,7 @@
                     }
                 }
 
+                //This if statement records if there is a collision between the ball and the players paddle.
                 if(top_y > 300) {
                     if(top_y < (paddle1.y + paddle1.height) && bottom_y > paddle1.y && top_x < (paddle1.x + paddle1.width) &&  bottom_x > paddle1.x) {
                         // hit the player's paddle
@@ -231,6 +230,7 @@
                         this.y += this.y_speed;
                     }
                 } 
+                //This if statement records if there is a collision between the ball and the computers paddle.
                 else {
                     if(top_y < (paddle2.y + paddle2.height) && bottom_y > paddle2.y && top_x < (paddle2.x + paddle2.width) &&  bottom_x > paddle2.x) {
                         // hit the computer's paddle
@@ -246,12 +246,15 @@
             var computer = new Computer();
             var ball = new Ball(235, 300);
             
-            var render = function() {
+            
+            var draw = function() {
                 ctx.fillStyle = "#000";
                 ctx.fillRect(0, 0, width, height);
-                player.render();
-                computer.render();
-                ball.render();
+                player.draw();
+                computer.draw();
+                ball.draw();
+                drawComputerScore();
+                drawPlayerScore();
             };
             
             //Code to find out wich key is pressed on the keyboard
@@ -266,6 +269,5 @@
             });            
 
         </script>
-       
     </body>
 </html>
