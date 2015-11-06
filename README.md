@@ -13,3 +13,11 @@ GaCo hopes the game will become popular, so that they can then sell advertisemen
 > ** Wikipedia**
 
 Pong has been regarded as one of the classic arcade games for decades now. It's simplicity in is user interaction means that it can be played by even the most amatur of gamers. I chose to recreate my own version of it as I beleve that it is addicting and usable by everyone, regardless of age.
+
+1. The program is a one player game, with an AI oponent.
+
+1. The program lets the user move their paddle with the left and right arrows on the keyboard.
+
+1. The AI has a max speed so that users have a chance to beat it.
+
+1. A score for the user and AI is recorded on the left hand side.
